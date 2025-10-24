@@ -22,7 +22,6 @@
     "react-hook-form": "^7.48.2",
     "zod": "^3.22.4",
     "@hookform/resolvers": "^3.3.2",
-    "framer-motion": "^10.16.16",
     "react-hot-toast": "^2.4.1",
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.2.0",
