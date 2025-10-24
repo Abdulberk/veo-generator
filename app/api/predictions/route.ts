@@ -50,10 +50,11 @@ export async function POST(request: NextRequest) {
       veoRequest.image_url = body.imageUrl;
     }
 
-    // Determine the correct endpoint based on mode
+    // Determine the correct endpoint based on model and mode
+    const baseEndpoint = model.apiConfig.endpoint;
     const apiEndpoint = body.mode === "image-to-video" 
-      ? `${GATEAI_QUEUE_URL}/fal-ai/veo3/image-to-video`
-      : `${GATEAI_QUEUE_URL}/fal-ai/veo3`;
+      ? `${GATEAI_QUEUE_URL}${baseEndpoint}/image-to-video`
+      : `${GATEAI_QUEUE_URL}${baseEndpoint}`;
 
     console.log("Sending to GateAI Queue API:", {
       url: apiEndpoint,

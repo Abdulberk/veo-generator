@@ -6,6 +6,7 @@ import { Select } from "@/app/components/ui/select";
 import { Textarea } from "@/app/components/ui/textarea";
 import { Switch } from "@/app/components/ui/switch";
 import { GenerationInput } from "@/app/lib/types/models";
+import { useModel } from "@/app/lib/context/ModelContext";
 import ModelRegistry from "@/app/lib/models/registry";
 
 interface GeneratorFormProps {
@@ -15,19 +16,17 @@ interface GeneratorFormProps {
 }
 
 export function GeneratorForm({ onSubmit, isGenerating, onCancel }: GeneratorFormProps) {
+  const { selectedModel } = useModel();
   const [mode, setMode] = useState<"text-to-video" | "image-to-video">("text-to-video");
   const [prompt, setPrompt] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [duration, setDuration] = useState<number>(8);
-  const [aspectRatio, setAspectRatio] = useState("16:9");
-  const [resolution, setResolution] = useState("1080p");
-  const [generateAudio, setGenerateAudio] = useState(true);
+  const [duration, setDuration] = useState<number>(selectedModel.defaults.duration);
+  const [aspectRatio, setAspectRatio] = useState(selectedModel.defaults.aspectRatio);
+  const [resolution, setResolution] = useState(selectedModel.defaults.resolution);
+  const [generateAudio, setGenerateAudio] = useState(selectedModel.defaults.generateAudio);
   const [autoFix, setAutoFix] = useState(true);
   const [enhancePrompt, setEnhancePrompt] = useState(true);
   const [errors, setErrors] = useState<string[]>([]);
-
-  const models = ModelRegistry.getAll();
-  const selectedModel = models[0]; // Using Veo3 as default for now
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

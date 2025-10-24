@@ -8,21 +8,21 @@ import { useVideoGenerator } from "@/app/lib/hooks/useVideoGenerator";
 import { useModel } from "@/app/lib/context/ModelContext";
 import { GenerationInput } from "@/app/lib/types/models";
 
-export default function Home() {
+export default function Veo31FastPage() {
   const { selectedModel } = useModel();
   const { generate, prediction, isGenerating, error, cancel, reset } = useVideoGenerator();
 
   const handleSubmit = async (input: GenerationInput) => {
-    // Ensure we're using the selected model (veo3 for home page)
-    const modelInput = { ...input, modelId: selectedModel.id };
-    await generate(modelInput);
+    // Ensure we're using the veo3.1-fast model
+    const veo31FastInput = { ...input, modelId: "veo3.1-fast" };
+    await generate(veo31FastInput);
   };
 
   const showVideo = prediction?.status === "succeeded" && prediction.output;
   const showStatus = isGenerating || (prediction && !showVideo);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
@@ -41,28 +41,28 @@ export default function Home() {
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
-                      <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center">
+                      <svg className="w-6 h-6 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">Fast Generation</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">~60 seconds</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">Lightning Fast</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">~30-45 seconds</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-                      <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <div className="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center">
+                      <svg className="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">HD Quality</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Up to 1080p</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">Quick Iteration</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Perfect for testing</p>
                     </div>
                   </div>
                 </div>
@@ -78,18 +78,24 @@ export default function Home() {
               ) : (
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-12">
                   <div className="text-center">
-                    <div className="w-24 h-24 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-12 h-12 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-24 h-24 bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-12 h-12 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Ready to Create
+                      Ready to Create Fast with Veo 3.1
                     </h3>
-                    <p className="text-gray-500 dark:text-gray-400">
-                      Enter a prompt and click generate to create your AI video
+                    <p className="text-gray-500 dark:text-gray-400 mb-2">
+                      Lightning fast AI video generation for rapid prototyping
                     </p>
+                    <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
+                      <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                      Fastest Model
+                    </div>
                   </div>
                 </div>
               )}
@@ -114,32 +120,32 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Info Section */}
+          {/* Veo 3.1 Fast Info Section */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                🎬 Multiple Durations
+                ⚡ Lightning Speed
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Create videos of 4, 6, or 8 seconds to match your needs
+                Generate videos in 30-45 seconds - perfect for rapid iteration and testing concepts
               </p>
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                📐 Flexible Formats
+                🎯 Optimized for Speed
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Support for 16:9 landscape and 9:16 portrait aspect ratios
+                720p resolution focus ensures fastest possible generation without compromising quality
               </p>
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                🎵 Audio Generation
+                🚀 Rapid Prototyping
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Optional audio generation to bring your videos to life
+                Ideal for content creators who need quick results and fast feedback loops
               </p>
             </div>
           </div>
@@ -151,7 +157,7 @@ export default function Home() {
         <div className="container mx-auto px-4 py-6">
           <div className="text-center text-sm text-gray-600 dark:text-gray-400">
             <p>
-              Powered by Google {selectedModel.displayName} AI Model • Built with Next.js & TypeScript
+              Powered by Google Veo 3.1 Fast AI Model • Built with Next.js & TypeScript
             </p>
           </div>
         </div>

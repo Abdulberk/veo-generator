@@ -29,21 +29,80 @@ const veo3Config: ModelConfig = {
     generateAudio: true
   },
   apiConfig: {
-    endpoint: "/predictions",
+    endpoint: "/fal-ai/veo3",
     versionString: "google/veo-3",
     pollInterval: 2000,
     timeout: 180000 // 3 minutes
   }
 };
 
-// Future models can be added here
-// const veo3FastConfig: ModelConfig = { ... }
-// const veo31Config: ModelConfig = { ... }
+// Veo3.1 model configuration
+const veo31Config: ModelConfig = {
+  id: "veo3.1",
+  name: "veo-3.1",
+  displayName: "Veo 3.1",
+  version: "google/veo-3.1",
+  provider: "google",
+  type: "both",
+  capabilities: {
+    maxDuration: 8,
+    supportedDurations: [4, 6, 8],
+    supportedAspectRatios: ["16:9", "9:16"],
+    supportedResolutions: ["720p", "1080p"],
+    hasAudioGeneration: true,
+    hasImageInput: true,
+    hasTextInput: true
+  },
+  defaults: {
+    duration: 8,
+    aspectRatio: "16:9",
+    resolution: "720p", // Veo 3.1 default resolution
+    generateAudio: true
+  },
+  apiConfig: {
+    endpoint: "/fal-ai/veo3.1",
+    versionString: "google/veo-3.1",
+    pollInterval: 2000,
+    timeout: 180000 // 3 minutes
+  }
+};
+
+// Veo3.1 Fast model configuration
+const veo31FastConfig: ModelConfig = {
+  id: "veo3.1-fast",
+  name: "veo-3.1-fast",
+  displayName: "Veo 3.1 Fast",
+  version: "google/veo-3.1-fast",
+  provider: "google",
+  type: "both",
+  capabilities: {
+    maxDuration: 8,
+    supportedDurations: [4, 6, 8],
+    supportedAspectRatios: ["16:9", "9:16"],
+    supportedResolutions: ["720p"], // Fast version only supports 720p
+    hasAudioGeneration: true,
+    hasImageInput: true,
+    hasTextInput: true
+  },
+  defaults: {
+    duration: 8,
+    aspectRatio: "16:9",
+    resolution: "720p",
+    generateAudio: true
+  },
+  apiConfig: {
+    endpoint: "/fal-ai/veo3.1/fast",
+    versionString: "google/veo-3.1-fast",
+    pollInterval: 1500, // Faster polling for fast model
+    timeout: 120000 // 2 minutes - faster generation
+  }
+};
 
 class ModelRegistry {
   private static models = new Map<string, ModelConfig>([
     [veo3Config.id, veo3Config],
-    // Add more models here as they become available
+    [veo31Config.id, veo31Config],
+    [veo31FastConfig.id, veo31FastConfig],
   ]);
 
   static get(id: string): ModelConfig | undefined {

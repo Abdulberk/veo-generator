@@ -8,21 +8,21 @@ import { useVideoGenerator } from "@/app/lib/hooks/useVideoGenerator";
 import { useModel } from "@/app/lib/context/ModelContext";
 import { GenerationInput } from "@/app/lib/types/models";
 
-export default function Home() {
+export default function Veo31Page() {
   const { selectedModel } = useModel();
   const { generate, prediction, isGenerating, error, cancel, reset } = useVideoGenerator();
 
   const handleSubmit = async (input: GenerationInput) => {
-    // Ensure we're using the selected model (veo3 for home page)
-    const modelInput = { ...input, modelId: selectedModel.id };
-    await generate(modelInput);
+    // Ensure we're using the veo3.1 model
+    const veo31Input = { ...input, modelId: "veo3.1" };
+    await generate(veo31Input);
   };
 
   const showVideo = prediction?.status === "succeeded" && prediction.output;
   const showStatus = isGenerating || (prediction && !showVideo);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
@@ -41,14 +41,14 @@ export default function Home() {
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
-                      <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center">
+                      <svg className="w-6 h-6 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">Fast Generation</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">~60 seconds</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">Enhanced Speed</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Faster generation</p>
                     </div>
                   </div>
                 </div>
@@ -57,12 +57,12 @@ export default function Home() {
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
                       <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">HD Quality</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Up to 1080p</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">Improved Quality</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Better realism</p>
                     </div>
                   </div>
                 </div>
@@ -78,18 +78,24 @@ export default function Home() {
               ) : (
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-12">
                   <div className="text-center">
-                    <div className="w-24 h-24 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-12 h-12 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-24 h-24 bg-gradient-to-br from-emerald-100 to-blue-100 dark:from-emerald-900/30 dark:to-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-12 h-12 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Ready to Create
+                      Ready to Create with Veo 3.1
                     </h3>
-                    <p className="text-gray-500 dark:text-gray-400">
-                      Enter a prompt and click generate to create your AI video
+                    <p className="text-gray-500 dark:text-gray-400 mb-2">
+                      Experience the latest AI video generation model
                     </p>
+                    <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300">
+                      <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                      Latest Model
+                    </div>
                   </div>
                 </div>
               )}
@@ -114,32 +120,32 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Info Section */}
+          {/* Veo 3.1 Info Section */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                🎬 Multiple Durations
+                🚀 Enhanced Performance
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Create videos of 4, 6, or 8 seconds to match your needs
+                Veo 3.1 offers improved generation speed and better resource efficiency
               </p>
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                📐 Flexible Formats
+                ✨ Better Realism
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Support for 16:9 landscape and 9:16 portrait aspect ratios
+                Enhanced AI model produces more realistic and detailed video content
               </p>
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                🎵 Audio Generation
+                🎯 Improved Prompt Understanding
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Optional audio generation to bring your videos to life
+                Better interpretation of complex prompts and scene descriptions
               </p>
             </div>
           </div>
@@ -151,7 +157,7 @@ export default function Home() {
         <div className="container mx-auto px-4 py-6">
           <div className="text-center text-sm text-gray-600 dark:text-gray-400">
             <p>
-              Powered by Google {selectedModel.displayName} AI Model • Built with Next.js & TypeScript
+              Powered by Google Veo 3.1 AI Model • Built with Next.js & TypeScript
             </p>
           </div>
         </div>
