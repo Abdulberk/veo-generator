@@ -11,7 +11,23 @@
   "dependencies": {
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "next": "16.0.0"
+    "next": "16.0.0",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-toast": "^1.1.5",
+    "@radix-ui/react-progress": "^1.0.3",
+    "@radix-ui/react-switch": "^1.0.3",
+    "axios": "^1.6.2",
+    "zustand": "^4.4.7",
+    "react-hook-form": "^7.48.2",
+    "zod": "^3.22.4",
+    "@hookform/resolvers": "^3.3.2",
+    "framer-motion": "^10.16.16",
+    "react-hot-toast": "^2.4.1",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.2.0",
+    "date-fns": "^3.0.6",
+    "react-player": "^2.13.0"
   },
   "devDependencies": {
     "typescript": "^5",
